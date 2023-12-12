@@ -1,0 +1,192 @@
+a {
+  text-decoration: none;
+}
+
+.main_nav{
+  background-color: white;
+  height: 70px;
+  box-shadow: 2px 4px 4px rgb(28, 28, 28);
+  border: 0.5px solid rgba(173, 216, 230, 0.553);
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  justify-content: space-between;
+}
+.main_nav img {
+  padding: 10px;
+  background-color: rgb(219, 230, 255);
+  border-radius: 12px;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background-color: rgb(238, 251, 255);
+  background-image: url('./../assets/policeBG.JPG');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.glass-banner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  background:linear-gradient(to left,rgba(0, 0, 0, 0.942) , rgba(7, 6, 3, 0.83),rgba(0, 0, 0, 0.902));
+}
+
+.glass-banner p {
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  font-weight: 800;
+  font-family: "Poppins";
+}
+
+.cta1 {
+  border: 2px solid white;
+  padding: 6px 12px;
+  width: 140px;
+  border-radius: 12px;
+}
+
+.cta1:hover {
+  background-color: rgba(194, 192, 254, 0.472);
+}
+
+.cta1 button {
+  position: relative;
+  left: -10px;
+  border: none;
+  background: none;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: 400;
+  font-size: small;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.cta1 button::after {
+  top: 6px;
+  right: -2px;
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  transform: rotate(-45deg);
+}
+
+.main_section {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: fit-content;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main_section section {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  border: 0.5px solid rgba(177, 176, 176, 0.546);
+  padding: 15px 20px;
+}
+
+.main_section section img {
+  padding: 20px 20px 20px 0px;
+  border-radius: 12px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-weight: 400;
+  font-size: small;
+  margin-bottom: 10px;
+}
+
+.cta {
+  border: 0.5px solid rgb(117, 78, 152);
+  padding: 4px 8px;
+  font-size: x-small;
+  font-weight: 400;
+  border-radius: 12px;
+  background-color: rgb(237, 241, 251);
+}
+
+.cta:hover {
+  background-color: rgb(152, 181, 255);
+  cursor: pointer;
+}
+
+.contact_details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+  background-color: rgb(237, 241, 251);
+}
+
+.contact p:nth-child(2){
+  margin-bottom: 1rem;
+}
+
+.social_links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.social_links i{
+  color: rgb(250, 244, 255);
+  font-size: 19px;
+}
+
+.social_links a i:hover{
+  color: rgb(248, 241, 255);
+  font-size: 19px;
+}
+
+.social_links a:nth-child(1) i{
+  color: rgb(35, 90, 200);
+  font-size: 20.5px;
+}
+
+.social_links a:nth-child(2) i{
+  color: rgb(228, 39, 10);
+  font-size: 23px;
+}
+
+.social_links a:nth-child(3) i{
+  color: rgb(18, 18, 18);
+  font-size: 20.5px;
+}
+
+.dev_info {
+  background-color: rgb(62, 68, 81);
+}
+
+.dev_info p {
+  text-align: center;
+  font-size: x-small;
+  color: white;
+  padding: 8px 0px;
+}

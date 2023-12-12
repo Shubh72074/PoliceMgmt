@@ -1,0 +1,157 @@
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid rgb(226, 226, 226);
+    width: 80%;
+    border-radius: 1.2rem;
+    background-color: rgb(255, 254, 252);
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+    max-width: 460px;
+  }
+  .title {
+    width: 100%;
+  }
+  .c {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    /* gap: 20px; */
+    justify-content: space-between;
+  }
+  .job-title {
+    font-size: medium;
+    font-weight: 600;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .salary {
+    color: black;
+    font-weight: 600;
+    font-size: medium;
+    padding: 5px 20px;
+    /* background-color: rgba(255, 178, 96, 0.65); */
+    border-radius: 6px;
+  }
+
+  .tags {
+    color: rgb(98, 98, 98);
+    font-weight: 600;
+    font-size: medium;
+    padding: 5px 20px;
+    background-color: rgba(176, 159, 133, 0.65);
+    border-radius: 12px;
+    /* margin: 0px auto; */
+  }
+  .posted-at {
+    background-color: rgb(228, 250, 255);
+    padding: 6px 10px;
+    border-radius: 1rem;
+    font-size: small;
+    font-weight: 600;
+    color: rgb(10, 109, 200);
+  }
+
+  .share {
+    display: flex;
+    gap: 10px;
+  }
+  .share>button {
+    padding: 0.5rem 0.5rem;
+    border-radius: 50%;
+    border: none;
+  }
+
+  .line {
+    height: 3rem;
+    width: 1px;
+    background-color: rgba(128, 128, 128, 0.496);
+  }
+
+  .apply {
+    display: flex;
+    gap: 10px;
+
+  }
+  .apply>button {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(128, 128, 128, 0.517);
+    border-radius: 6px;
+  }
+
+  .apply>button:nth-child(1)
+  {
+    background-color: rgba(245, 222, 179, 0.252);
+  }
+
+  .apply>button:nth-child(2) {
+    background-color: rgb(128, 71, 1);
+    color: white;
+  }
+
+  .location {
+    font-weight: 600;
+    font-size: medium;
+    padding: 5px 20px;
+    /* background-color: rgba(153, 101, 33, 0.65); */
+    border-radius: 6px;
+  }
+  .company-detail {
+    font-size: small;
+    font-weight: 400;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .company-logo img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+</style>
+<div class="card">
+  <div class="c">
+    <div class="title">
+      <div class="job-title">
+        Technical Content Writing
+      </div>
+      <div class="company-detail">
+        PeerXP | Bangalore, India
+      </div>
+    </div>
+    <div class="company-logo">
+      <img src="./static/assets/badge.png" alt="">
+    </div>
+  </div>
+  <div class="c">
+    <div class="salary">
+      <p>Salary</p>
+      <p>$400 - $1k</p>
+    </div>
+    <div class="line"></div>
+    <div class="location">
+      <p>Location</p>
+      <p>USA</p>
+    </div>
+  </div>
+  <div class="c">
+    <div class="tags">tags</div>
+    <div class="tags">tags</div>
+    <div class="tags">tags</div>
+    <div class="tags">tags</div>
+  </div>
+  <div class="c">
+    <div class="posted-at">
+      2023-10-09
+    </div>
+  </div>
+  <div class="c">
+    <div class="share">
+      <button>fav</button>
+      <button>share</button>
+    </div>
+    <div class="apply">
+      <button>view</button>
+      <button>apply</button>
+    </div>
+  </div>
+</div>

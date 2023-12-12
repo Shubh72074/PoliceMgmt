@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criminal Management System | Admin</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
+</head>
+<body>
+  <div class="admin_login_wrapper">
+    <form class="admin_login_form" action="{{url_for('admin')}}" method="POST">
+      <div class="usrnm_wrapper">
+        <label for="admin_usrnm">Admin</label>
+        <input type="text" name="admin_usrnm" id="admin_usrnm" required>
+      </div>
+      <div class="pass_wrapper">
+        <label for="admin_pass">Password</label>
+        <input type="password" name="admin_pass" id="admin_pass" required>
+      </div>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADMIN | {{url.replace('_',' ').upper()}}</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
+</head>
+
+<body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+  integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <div class="wrapper">
+    <nav class="sidebar">
+      <div class="nav_header">
+        <img onclick="red()" src="{{url_for('static',filename='assets/badge.png')}}" alt="logo" width="42px" height="42px">
+        <p>Admin</p>
+      </div>
+      <a {% if url=='dashboard' %} class="active" {% endif %} href="dashboard">
+        <p><span>Dashboard</span></p>
+      </a>
+      <a {% if url=='police_station' %} class="active" {% endif %} href="police_station">
+        <p><span>Police Station</span></p>
+      </a>
+      <a {% if url=='police' %} class="active" {% endif %} href="police">
+        <p><span>Police</span></p>
+      </a>
+      <a {% if url=='crime_category' %} class="active" {% endif %} href="crime_category">
+        <p><span>Crime Category</span></p>
+      </a>
+      <a {% if url=='criminals' %} class="active" {% endif %} href="criminals">
+        <p><span>View Criminals</span></p>
+      </a>
+      <a {% if url=='fir' %} class="active" {% endif %} href="fir">
+        <p><span>View FIR</span></p>
+      </a>
+      <script>
+        function red() {
+          window.location.href = "/";
+        }
+      </script>
+    </nav>
+    {% if url=='dashboard' %}
+    <main>
+      <header>
+        <p>Dashboard</p> <a href="logout">Logout</a>
+      </header>
+      <div class="content_wrapper">
+        <div class="card">
+          <div>
+            <div class="sub_card">
+              <img src="{{url_for('static',filename='assets/police-station.png')}}" alt="cop" width="28px" height="28px">
+            </div>
+            <div>
+              <p>Police Stations</p>
+              <p>Total Counts: {{ps_counts}}</p>
+            </div>
+          </div>
+          <div class="line">
+            <a href="police_station">View All</a>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="sub_card">
+              <img src="{{url_for('static',filename='assets/cop.png')}}" alt="cop" width="28px" height="28px">
+            </div>
+            <div>
+              <p>Police Officers</p>
+              <p>Total Counts: {{po_counts}}</p>
+            </div>
+          </div>
+          <div class="line">
+            <a href="police">View All</a>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="sub_card">
+              <img src="{{url_for('static',filename='assets/folder.png')}}" alt="cop" width="28px" height="28px">
+            </div>
+            <div>
+              <p>Criminal Records</p>
+              <p>Total Counts: {{c_counts}}</p>
+            </div>
+          </div>
+          <div class="line">
+            <a href="criminals">View All</a>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="sub_card">
+              <img src="{{url_for('static',filename='assets/criminal-database.png')}}" alt="cop" width="28px"
+                height="28px">
+            </div>
+            <div>
+              <p>Total FIR</p>
+              <p>Total Counts: {{fir_counts}}</p>
+            </div>
+          </div>
+          <div class="line">
+            <a href="fir">View All</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    {% elif url=='police_station' %}
+    <main>
+      <header>
+        <p>Police Stations</p> <a href="logout">Logout</a>
+      </header>
+      {% extends 'admin/police_station.html' %}
+    </main>
+    {% elif url=='police' %}
+    <main>
+      <header>
+        <p>Police</p> <a href="logout" >Logout</a>
+      </header>
+      {% extends 'admin/police.html' %}
+    </main>
+    {% elif url=='crime_category' %}
+    <main>
+      <header>
+        <p>Crime Categories</p> <a href="logout" >Logout</a>
+      </header>
+      {% extends 'admin/crime_category.html' %}
+    </main>
+    {% elif url=='criminals' %}
+    <main>
+      <header>
+        <p>Criminals</p> <a href="logout">Logout</a>
+      </header>
+      {% extends 'admin/view_criminals.html' %}
+    </main>
+    {% elif url=='fir' %}
+    <main>
+      <header>
+        <p>FIR</p> <a href="logout">Logout</a>
+      </header>
+      {% extends 'admin/fir.html' %}
+    </main>
+    {% else %}
+    <main>
+      <header>NOT FOUND</header>
+    </main>
+    {% endif %}
+  </div>
+</body>
+
+</html>

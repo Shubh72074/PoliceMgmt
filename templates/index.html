@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Police Management System</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <script>
+    function rr() {
+      window.location.assign("#main_section");
+    }
+  </script>
+  <nav class="main_nav">
+    <img src="{{url_for('static',filename='assets/badge.png')}}" width="46px" height="46px" alt="logo">
+    <div>
+      <p style="font-weight: 500; font-size: small; text-align: center; color: black;"><span style="font-weight: 600; font-size: medium;text-align: center; color: rgb(249, 60, 60);">Urgent Helpline:</span><br>+91-675 675 7546</p>
+    </div>
+  </nav>
+  <header class="main_header">
+    <div class="banner">
+      <div class="glass-banner">
+        <p>
+          "Streamline Your Law Enforcement Operations."
+        </p>
+        <div class="cta1">
+          <button type="button" onclick="rr()">
+            Get Started
+          </button>
+        </div>
+      </div>
+  </header>
+  <section class="main_section" id="main_section">
+    <section>
+      <img src="./../static/assets/icons8-admin-panel-66.png" alt="admin_panel">
+      <div class="details">
+        <p class="title">
+          Admin Panel for Total Control.
+        </p>
+        <p class="desc">
+          Effortlessly manage your entire law enforcement system with our comprehensive admin panel. Access detailed
+          insights, control user access, and oversee the entire workflow.
+        </p>
+        <div>
+          <a href="{{url_for('admin')}}" class="cta">Explore Admin Features.</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <img src="./../static//assets/icons8-records-64.png" alt="police_panel">
+      <div class="details">
+        <p class="title">
+          Empower Your Police Force.
+        </p>
+        <p class="desc">
+          Equip your officers with powerful tools through the Police Panel. Streamline dispatch, access real-time data,
+          and ensure efficient communication and coordination in the field.
+        </p>
+        <div>
+          <a href="{{url_for('police')}}" class="cta">Discover Police Features.</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <img src="./../static/assets/icons8-complaint-64.png" alt="user_panel">
+      <div class="details">
+        <p class="title">
+          User-Friendly and Secure.
+        </p>
+        <p class="desc">
+          Our User Panel offers a safe and user-friendly experience for citizens and stakeholders. Easily report
+          incidents, access resources, and stay informed with our intuitive interface.
+        </p>
+        <div>
+          <a href="{{url_for('user')}}" class="cta">Explore User Features.</a>
+        </div>
+      </div>
+    </section>
+  </section>
+  <footer>
+    <div class="contact_details">
+      <div class="contact">
+        <p><span style="font-weight: 600">Email: </span> manish@gmail.com</p>
+        <p><span style="font-weight: 600">Mobile: </span> +91-223 323 4322</p>
+        <div class="social_links">
+          <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="address">
+        <p>
+          <span style="font-weight: 600">Street Address</span>: 123 Main Street <br>
+          <span style="font-weight: 600">City</span>: Navi Mumbai <br>
+          <span style="font-weight: 600">State</span>: Maharashtra <br>
+          <span style="font-weight: 600">ZIP Code</span>: 400708 <br>
+          <span style="font-weight: 600">Country</span>: India
+        </p>
+      </div>
+    </div>
+    <div class="dev_info">
+      <p>Copyright © 2023 Manish Pal. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

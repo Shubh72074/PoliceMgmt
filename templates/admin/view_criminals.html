@@ -1,0 +1,113 @@
+<div class="_wrapper">
+  <div class="table_nav">
+    <input type="text" class="_code" id="of_code" name="of_code" placeholder="Search By Code">
+    <div class="t_n_btns">
+      <button id="_prevBtn" type="button"><
+        </button>
+          <p><span id="_prev">0</span> to <span id="_next">10</span></p>
+          <button id="_nextBtn" type="button">></button>
+          
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Sr. No.
+        </th>
+        <th>
+          Case No.
+        </th>
+        <th>
+          Criminal Name
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <tbody id="data_">
+
+    </tbody>
+
+    </tr>
+
+  </table>
+
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      let g_data = [];
+      $.get('/api/police', (data, textStatus, jqXHR) => {
+        g_data = data;
+        renderData(data, 0, 10);
+      }).fail(function () {
+        document.getElementsByTagName('main').item(0).innerHTML = "Something went wrong...";
+      });;
+
+      $('#of_code').on('input', function (ele) {
+        const f_data = g_data.filter((data) => {
+          return data.id.includes(ele.target.value);
+        });
+        renderData(f_data, 0, 10);
+      })
+
+      $("#_prevBtn").on('click', function () {
+        if (parseInt($("#_prev").text()) > 0) {
+          document.getElementById("_prev").innerText = `${parseInt($("#_prev").text()) - 10}`;
+          document.getElementById("_next").innerText = `${parseInt($("#_next").text()) - 10}`;
+          let prev = parseInt($("#_prev").text());
+          let next = parseInt($("#_next").text());
+          renderData(g_data, prev, next);
+        }
+      })
+
+      $("#_nextBtn").on('click', function () {
+        if (parseInt($("#_next").text()) < g_data.length) {
+          document.getElementById("_prev").innerText = `${parseInt($("#_prev").text()) + 10}`;
+          document.getElementById("_next").innerText = `${parseInt($("#_prev").text()) + 10}`;
+          let next = parseInt($("#_next").text());
+          let prev = parseInt($("#_prev").text());
+          renderData(g_data, prev, next);
+        }
+      });
+
+
+      // $("tr").on('')
+
+      function renderData(data, prev, next) {
+        if (data.length > 10 && next < data.length) {
+          const _data = data.slice(prev, next);
+          let _trEle = "";
+          for (let i = prev; i < next; i++) {
+            _trEle += `<tr onclick='handleClick(this)'>
+      <td>${i + 1}</td>
+      <td>${data[i].id}</td>
+      <td>${data[i].name}</td>
+      <td>${Date().toString()}</td>
+    </tr>`
+          }
+          document.getElementById('data_').innerHTML = _trEle;
+        }
+        else if (data.length == 0) {
+          document.getElementsByTagName('tbody').item(0).innerHTML = "<h3>No data found</h3>";
+        }
+        else {
+          let _trEle = "";
+          for (let i = prev; i < data.length; i++) {
+            _trEle += `<tr onclick='handleClick(this)'>
+      <td>${i + 1}</td>
+      <td>${data[i].id}</td>
+      <td>${data[i].name}</td>
+      <td>${data[i].st_code}</td>
+    </tr>`
+          }
+          document.getElementById('data_').innerHTML = _trEle;
+        }
+
+      }
+    });
+
+  </script>
+</div>

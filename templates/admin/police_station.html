@@ -1,0 +1,173 @@
+<div class="_wrapper">
+  <div class="table_nav">
+    <input type="text" class="_code" id="st_code" name="st_code" placeholder="Search By Code">
+    <div class="t_n_btns">
+      <button id="_prevBtn" type="button"><
+        </button>
+          <p><span id="_prev">0</span> to <span id="_next">10</span></p>
+          <button id="_nextBtn" type="button">></button>
+          <button onclick="handleNew()"><span>+</span>Add Station</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Sr. No.
+        </th>
+        <th>
+          Station Code
+        </th>
+        <th>
+          Station Name
+        </th>
+        <th>
+          Address
+        </th>
+      </tr>
+    </thead>
+    <tbody id="data_">
+
+    </tbody>
+
+    </tr>
+
+  </table>
+  <div class="update_box">
+    <div class="ups_wrapper">
+      <form action="/api/police_station/update" method="post">
+        <div>
+          <label for="st_Code">Station Code</label><br>
+          <input type="text" name="st_Code" id="st_Code" required>
+        </div>
+        <div>
+          <label for="st_name">Station Name</label><br>
+          <input type="text" name="st_name" id="st_name" required>
+        </div>
+        <div>
+          <label for="st_address">Address</label><br>
+          <input type="text" name="st_address" id="st_address" required>
+        </div>
+        <div class="_btns">
+          <button type="submit">Update</button>
+          <button type="button" onclick="handleClose()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="add_box">
+    <div class="ups_wrapper">
+      <form action="/api/police_station/add" method="post">
+        <div>
+          <label for="st_Code">Station Code</label><br>
+          <input type="text" name="st_Code" id="st_Code" required>
+        </div>
+        <div>
+          <label for="st_name">Station Name</label><br>
+          <input type="text" name="st_name" id="st_name" required>
+        </div>
+        <div>
+          <label for="st_address">Address</label><br>
+          <input type="text" name="st_address" id="st_address" required>
+        </div>
+        <div class="_btns">
+          <button type="submit">Update</button>
+          <button type="button" onclick="handleClose()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      let g_data = [];
+      $.get('/api/police_stations', (data, textStatus, jqXHR) => {
+        g_data = data;
+        renderData(data, 0, 10);
+      }).fail(function () {
+        document.getElementsByTagName('main').item(0).innerHTML = "Something went wrong...";
+      });;
+
+      $('#st_code').on('input', function (ele) {
+        const f_data = g_data.filter((data) => {
+          return data.id.includes(ele.target.value);
+        });
+        renderData(f_data, 0, 10);
+      })
+
+      $("#_prevBtn").on('click', function () {
+        if (parseInt($("#_prev").text()) > 0) {
+          document.getElementById("_prev").innerText = `${parseInt($("#_prev").text()) - 10}`;
+          document.getElementById("_next").innerText = `${parseInt($("#_next").text()) - 10}`;
+          let prev = parseInt($("#_prev").text());
+          let next = parseInt($("#_next").text());
+          renderData(g_data, prev, next);
+        }
+      })
+
+      $("#_nextBtn").on('click', function () {
+        if (parseInt($("#_next").text()) < g_data.length) {
+          document.getElementById("_prev").innerText = `${parseInt($("#_prev").text()) + 10}`;
+          document.getElementById("_next").innerText = `${parseInt($("#_prev").text()) + 10}`;
+          let next = parseInt($("#_next").text());
+          let prev = parseInt($("#_prev").text());
+          renderData(g_data, prev, next);
+        }
+      });
+
+
+      // $("tr").on('')
+
+      function renderData(data, prev, next) {
+        if (data.length > 10 && next < data.length) {
+          const _data = data.slice(prev, next);
+          let _trEle = "";
+          for (let i = prev; i < next; i++) {
+            _trEle += `<tr onclick='handleClick(this)'>
+      <td>${i + 1}</td>
+      <td>${data[i].id}</td>
+      <td>${data[i].name}</td>
+      <td>${data[i].address}</td>
+    </tr>`
+          }
+          document.getElementById('data_').innerHTML = _trEle;
+        }
+        else if (data.length == 0) {
+          document.getElementsByTagName('tbody').item(0).innerHTML = "<h3>No data found</h3>";
+        }
+        else {
+          let _trEle = "";
+          for (let i = prev; i < data.length; i++) {
+            _trEle += `<tr onclick='handleClick(this)'>
+      <td>${i + 1}</td>
+      <td>${data[i].id}</td>
+      <td>${data[i].name}</td>
+      <td>${data[i].address}</td>
+    </tr>`
+          }
+          document.getElementById('data_').innerHTML = _trEle;
+        }
+
+      }
+    });
+
+    function handleClick(ele) {
+      const _code = ele.childNodes[3].innerText;
+      const _name = ele.childNodes[5].innerText;
+      const _addr = ele.childNodes[7].innerText;
+
+      document.querySelector("#st_Code").value = _code;
+      document.querySelector("#st_name").value = _name;
+      document.querySelector("#st_address").value = _addr;
+      document.querySelector(".update_box").style.display = "flex";
+    }
+
+    function handleClose() {
+      document.querySelector('.update_box').style.display = 'none';
+      document.querySelector('.add_box').style.display = 'none';
+    }
+    
+    function handleNew() {
+      document.querySelector('.add_box').style.display = 'flex';
+    }
+  </script>
+</div>
