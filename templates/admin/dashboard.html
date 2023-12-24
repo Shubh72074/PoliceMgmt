@@ -57,7 +57,7 @@
             </div>
             <div>
               <p>Police Stations</p>
-              <p>Total Counts: {{ps_counts}}</p>
+              <p>Total Counts: <span id="ps_counts">0</span></p>
             </div>
           </div>
           <div class="line">
@@ -71,7 +71,7 @@
             </div>
             <div>
               <p>Police Officers</p>
-              <p>Total Counts: {{po_counts}}</p>
+              <p>Total Counts: <span id="po_counts">0</span></p>
             </div>
           </div>
           <div class="line">
@@ -85,7 +85,7 @@
             </div>
             <div>
               <p>Criminal Records</p>
-              <p>Total Counts: {{c_counts}}</p>
+              <p>Total Counts: <span id="cr_counts">0</span></p>
             </div>
           </div>
           <div class="line">
@@ -100,7 +100,7 @@
             </div>
             <div>
               <p>Total FIR</p>
-              <p>Total Counts: {{fir_counts}}</p>
+              <p>Total Counts: <span id="fir_counts">0</span></p>
             </div>
           </div>
           <div class="line">
@@ -150,6 +150,29 @@
     </main>
     {% endif %}
   </div>
+  <script>
+    $(document).ready(function(){
+      let psc = 0;
+      let poc = 0;
+      let crc = 0;
+      let frc = 0;
+
+      $.get('/api/police_stations',(data,textStatus,jqXHR) => {
+        psc = data.length;
+        document.getElementById("ps_counts").innerText = psc.toString();
+      })
+      $.get('/api/police',(data,textStatus,jqXHR) => {
+        poc = data.length;
+        document.getElementById("po_counts").innerText = poc.toString();
+      })
+      // $.get('/api/police',(data,textStatus,jqXHR) => {
+      //   crc = data.length();
+      // })
+      // $.get('/api/police',(data,textStatus,jqXHR) => {
+      //   frc = data.length();
+      // })
+    })
+  </script>
 </body>
 
 </html>
